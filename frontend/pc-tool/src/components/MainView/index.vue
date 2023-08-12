@@ -8,12 +8,13 @@
         <Info v-else />
         <Image2DMax />
         <slot name="editClass" v-if="$slots.editClass"></slot>
+        <slot name="minimapView" v-if="$slots.minimapView"></slot>
     </div>
 </template>
 
 <script setup lang="ts">
     import { onMounted, onBeforeUnmount, ref, reactive, computed } from 'vue';
-    import { MainRenderView, Event } from 'pc-render';
+    import { MainRenderView, MiniMapRenderView, Event } from 'pc-render';
     import { useInjectEditor } from '../../state';
     import * as _ from 'lodash';
     import * as THREE from 'three';
@@ -165,9 +166,10 @@
     function update() {
         updateLabel();
         // updateAnnotation();
-    }
+    };
 
     onMounted(() => {
+        
         if (dom.value) {
             view = new MainRenderView(dom.value, pc, { name: 'main-view' });
             pc.addRenderView(view);
@@ -177,6 +179,7 @@
     onBeforeUnmount(() => {
         view.removeEventListener(Event.RENDER_AFTER, update);
     });
+    
 </script>
 
 <style lang="less">

@@ -5,6 +5,7 @@
                 <template #main-view>
                     <MainView>
                         <template #editClass><EditClass /></template>
+                        <template #minimapView><MiniMapView /></template>
                     </MainView>
                 </template>
                 <template #img-view><ImgView /></template>
@@ -20,6 +21,7 @@
     import ImgView from '../ImgView/index.vue';
     import SideView from '../SideView/index.vue';
     import EditClass from '../EditClass/bs/main.vue';
+    import MiniMapView from '../MiniMap/bs/main.vue';
 </script>
 
 <style lang="less">
